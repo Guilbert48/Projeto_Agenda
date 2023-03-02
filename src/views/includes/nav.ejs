@@ -10,12 +10,19 @@
         <li class="nav-item" >
           <a class="nav-link" href="/">Home</a>
         </li>
-          <li class="nav-item" >
-            <a class="nav-link" href="/login/index">Login</a>
+        <% if(user) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login/logout">Sair</a>
           </li>
+        <% } else { %>
           <li class="nav-item" >
             <a class="nav-link" href="/cadastro/index">Cadastre-se</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login/index">Entrar</a>
+          </li>
+          <% } %>
+          
 
       </ul>
     </div>

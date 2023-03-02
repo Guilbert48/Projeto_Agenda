@@ -7,6 +7,7 @@ exports.register = async (req, res) =>{
     try{
         const cadastro = new Cadastro(req.body)
         await cadastro.register()
+        
         if(cadastro.erros.length > 0){
             req.flash('erros', cadastro.erros)
             req.session.save(function(){

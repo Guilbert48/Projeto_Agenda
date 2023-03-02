@@ -1,5 +1,6 @@
-    <%- include('includes/head') %>
-    <%- include('includes/nav') %>
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-2"></div>
@@ -7,21 +8,21 @@
         <div class="col-lg-8 my-3">
           <h1 class="text-center">Login</h1>
           <p class="text-center lead">Faça seu login</p>
-
+           <%- include('includes/messages') %>
         <div class="row">
 
           <div class="col-lg">
 
             <h4>Fazer login</h4>
-            <form action="/login/login" method="POST">
+            <form class="form-cadastro" action="/login/index" method="POST">
               <input type="hidden" name="_csrf" value="<%- csrfToken %>">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" placeholder="Digite seu email">
+                <input type="email" class="form-control" placeholder="Digite seu email" name="email">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Senha</label>
-                <input type="password" class="form-control"placeholder="Digite sua senha">
+                <input type="password" class="form-control"placeholder="Digite sua senha" name="password"> 
               </div>
               <button type="submit" class="btn btn-primary">Entrar</button>
             </form>

@@ -21,13 +21,10 @@ class Cadastro {
    
    await this.usersExists()
    if(this.erros.length > 0) return
-   try{
-        const salt = bcryptjs.genSaltSync()
-        this.body.password = bcryptjs.hashSync(this.body.password, salt)
-        this.user = await CadastroModel.create(this.body)
-      }catch(e){
-        console.log(e)
-      }
+      const salt = bcryptjs.genSaltSync()
+      this.body.password = bcryptjs.hashSync(this.body.password, salt)
+      this.user = await CadastroModel.create(this.body)
+  
   }
 
  async usersExists(){
@@ -38,7 +35,7 @@ class Cadastro {
 
 //Validação
   valida(){
-    this.cleanUp
+    this.cleanUp()
     if(!validator.isEmail(this.body.email)){
       this.erros.push('E-mail inválido')
     }
