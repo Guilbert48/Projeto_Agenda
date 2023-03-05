@@ -10,7 +10,13 @@
             
            <%- include('includes/messages') %>
            
-          <form class="form-cadastro" action="/contato/register" method="POST">
+           <% if(contato._id){ %>
+            <form action="/contato/edit/<%= contato._id %>" method="POST">
+              
+              <% }else{ %>
+                
+              <form class="form-cadastro" action="/contato/register" method="POST">
+            <% } %>
             <input type="hidden" name="_csrf" value="<%- csrfToken %>">
             <div class="form-group">
               <label for="exampleInputEmail1">Nome</label>

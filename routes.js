@@ -22,5 +22,6 @@ route.post('/cadastro/register', cadastroController.register)
 route.get('/contato/index', contatoController.index)
 route.post('/contato/register', contatoController.register )
 route.get('/contato/index/:id', contatoController.editIndex)
+route.post('/contato/edit/:id', contatoController.edit)
 
 module.exports = route;
