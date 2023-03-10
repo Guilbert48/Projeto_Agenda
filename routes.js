@@ -4,7 +4,7 @@ const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController')
 const cadastroController = require('./src/controllers/cadastroController')
 const contatoController = require('./src/controllers/contatoController')
-
+const { loginRequired } = require('./src/middlewares/middleware')
 // Rotas da home
 route.get('/', homeController.index);
 
@@ -19,9 +19,10 @@ route.get('/cadastro/index', cadastroController.index)
 route.post('/cadastro/register', cadastroController.register)
 
 //Rotas de contato
-route.get('/contato/index', contatoController.index)
-route.post('/contato/register', contatoController.register )
-route.get('/contato/index/:id', contatoController.editIndex)
-route.post('/contato/edit/:id', contatoController.edit)
+route.get('/contato/index', loginRequired, contatoController.index)
+route.post('/contato/register', loginRequired, contatoController.register )
+route.get('/contato/index/:id', loginRequired, contatoController.editIndex)
+route.post('/contato/edit/:id', loginRequired, contatoController.edit)
+route.get('/contato/delete/:id', loginRequired, contatoController.delete)
 
 module.exports = route;

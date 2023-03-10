@@ -65,6 +65,16 @@ Contato.prototype.cleanUp = function() {
     const contato = await ContatoModel.findById(id)
     return contato
   }
+  Contato.buscaContatos = async function(){
+    const contatos = await ContatoModel.find()
+      .sort({ criadoEm: -1 })
+    return contatos
+  }
+  Contato.delete = async function(id){
+    if(typeof id !== 'string') return
+    const contato = await ContatoModel.findOneAndDelete({_id: id})
+    return contato
+  }
 
 
 module.exports = Contato;
